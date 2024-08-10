@@ -1,0 +1,12 @@
+cp .env.example .env
+sleep 5
+./docker/bin/sail build --no-cache
+./docker/bin/sail up -d
+./docker/bin/sail down
+sleep 5
+./docker/bin/sail up -d
+sleep 5
+./docker/bin/sail composer install
+./docker/bin/sail artisan migrate:fresh --seed
+
+echo -e "\n\e[32mFinalizado com sucesso!\e[0m"
