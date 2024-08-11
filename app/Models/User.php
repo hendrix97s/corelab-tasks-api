@@ -34,6 +34,11 @@ class User extends Authenticatable
     'created_at',
     'updated_at',
     'email_verified_at',
+    'pivot',
+  ];
+
+  protected $appends = [
+    'workspace'
   ];
 
   /**
@@ -47,5 +52,15 @@ class User extends Authenticatable
       'email_verified_at' => 'datetime',
       'password' => 'hashed',
     ];
+  }
+
+  public function workspaces()
+  {
+    return $this->belongsToMany(Workspace::class, 'user_has_workspaces', 'user_id', 'workspace_id');
+  }
+
+  public function getWorkspaceAttribute()
+  {
+    return $this->workspaces()->first();
   }
 }

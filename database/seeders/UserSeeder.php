@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Workspace;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -20,7 +21,7 @@ class UserSeeder extends Seeder
       'password' => Hash::make('senha123'),
     ]);
 
-    // $userWorkspace = Workspace::factory()->create(['name' => 'Workspace']);
-    // $user->workspaces()->attach($userWorkspace->id);
+    $userWorkspace = Workspace::factory()->create(['name' => 'Workspace']);
+    $user->workspaces()->attach($userWorkspace->id);
   }
 }
