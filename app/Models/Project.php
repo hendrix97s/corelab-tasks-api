@@ -21,7 +21,8 @@ class Project extends Model
   ];
 
   protected $appends = [
-    'statuses'
+    'statuses',
+    'lists',
   ];
 
   public function statuses()
@@ -29,8 +30,18 @@ class Project extends Model
     return $this->hasMany(Status::class);
   }
 
+  public function lists()
+  {
+    return $this->hasMany(TaskList::class);
+  }
+
   public function getStatusesAttribute()
   {
     return $this->statuses()->get();
+  }
+
+  public function getListsAttribute()
+  {
+    return $this->lists()->get();
   }
 }

@@ -15,12 +15,17 @@ class Task extends Model
     'status_id',
     'project_id',
     'workspace_id',
+    'task_list_id',
     'expires_at',
     'priority',
     'assignee_id',
   ];
 
   protected $hidden = [
+    'status_id',
+    'project_id',
+    'workspace_id',
+    'assignee_id',
     'created_at',
     'updated_at',
     'pivot'

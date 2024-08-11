@@ -32,17 +32,10 @@ class ProjectController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(Project $project)
+  public function show(Request $request, ProjectRepository $repository)
   {
-    //
-  }
-
-  /**
-   * Show the form for editing the specified resource.
-   */
-  public function edit(Project $project)
-  {
-    //
+    $project = $repository->findByWorkspace($request->workspace, $request->project);
+    return response()->json($project);
   }
 
   /**

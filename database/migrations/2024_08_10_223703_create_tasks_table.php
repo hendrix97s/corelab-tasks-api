@@ -17,6 +17,7 @@ return new class extends Migration
       $table->text('description')->nullable();
       $table->foreignId('status_id')->nullable()->constrained('statuses');
       $table->foreignId('project_id')->constrained('projects')->onDelete('cascade');
+      $table->foreignId('task_list_id')->constrained('task_lists')->onDelete('cascade');
       $table->foreignId('workspace_id')->constrained('workspaces')->onDelete('cascade');
       $table->dateTime('expires_at')->nullable();
       $table->integer('priority')->default(0);

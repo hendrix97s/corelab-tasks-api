@@ -47,6 +47,11 @@ class Repository
     return $this->model->find($id);
   }
 
+  public function findByWorkspace(int $workspaceId, int $id)
+  {
+    return $this->model->where('workspace_id', $workspaceId)->where('id', $id)->first();
+  }
+
   public function findBySlugAndWorkspace(string $slug, int $workspaceId)
   {
     return $this->model->where('workspace_id', $workspaceId)->where('slug', $slug)->first();
