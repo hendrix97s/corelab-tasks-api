@@ -34,7 +34,7 @@ class RegisteredUserController extends Controller
     ]);
 
     $user->workspaces()->create([
-      'name' => $user->name . "Workspace",
+      'name' => "Workspace",
     ]);
 
     $user->token = $user->createToken('auth_token')->plainTextToken;
