@@ -33,17 +33,10 @@ class TaskController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(Task $task)
+  public function show(Request $request, TaskRepository $repository)
   {
-    //
-  }
-
-  /**
-   * Show the form for editing the specified resource.
-   */
-  public function edit(Task $task)
-  {
-    //
+    $task = $repository->findTaskByWorkspaceProjectAndTaskList($request->workspace, $request->project, $request->task_list, $request->task);
+    return response()->json($task);
   }
 
   /**

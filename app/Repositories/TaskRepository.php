@@ -32,4 +32,14 @@ class TaskRepository extends Repository
 
     return ($task->update($data)) ? $task->fresh() : false;
   }
+
+  public function findTaskByWorkspaceProjectAndTaskList(int $workspaceId, int $projectId, int $taskListId, int $id)
+  {
+    return $this->model
+      ->where('workspace_id', $workspaceId)
+      ->where('project_id', $projectId)
+      ->where('task_list_id', $taskListId)
+      ->where('id', $id)
+      ->first();
+  }
 }

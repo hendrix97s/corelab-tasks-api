@@ -35,7 +35,9 @@ class Task extends Model
     'status',
     'project',
     'workspace',
-    'assignable'
+    'assignable',
+    'task_list_name',
+
   ];
 
   public function assignable()
@@ -58,6 +60,11 @@ class Task extends Model
     return $this->hasOne(Workspace::class, 'id', 'workspace_id');
   }
 
+  public function taskList()
+  {
+    return $this->hasOne(TaskList::class, 'id', 'task_list_id');
+  }
+
   public function getStatusAttribute()
   {
     return $this->status()->first();
@@ -76,5 +83,10 @@ class Task extends Model
   public function getAssignableAttribute()
   {
     return $this->assignable()->first();
+  }
+
+  public function getTaskListNameAttribute()
+  {
+    return $this->taskList()->first()->name;
   }
 }
